@@ -27,4 +27,4 @@ if common.in_table(ngx.var.upstream_cache_status, cache_status) then
     common.incr_or_create(stats, common.key({group, 'cache', status}), 1)
 end
 
-common.incr_or_create(stats, common.key({group, 'cache', common.get_status_code_class(status)}), 1)
+common.incr_or_create(stats, common.key({group, 'status', common.get_status_code_class(status)}), 1)
