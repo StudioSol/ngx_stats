@@ -45,15 +45,16 @@ end
 
 
 function _M.format_response(key, value, response)
-    local path = split(key, ':')
+    local path = split(tostring(key), ':')
     key = table.remove(path, 1)
-    if key == nil then
-        return value
+    if key == nil or key == '' then
+         return value
     elseif response[key] == nil then
         response[key] = _M.format_response(_M.key(path), value, {})
     elseif response[key] ~= nil then
         response[key] = _M.format_response(_M.key(path), value, response[key])
     end
+    return response
 end
 
 
