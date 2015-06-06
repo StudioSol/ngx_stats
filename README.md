@@ -6,8 +6,7 @@ Watch live nginx stats from your servers
 ## Installation
 
 1. Install [nginx](http://nginx.org/) configured with [--add-module=/path/to/lua-nginx-module](https://github.com/chaoslawful/lua-nginx-module)
-2. Compile [lua CJSON](http://www.kyne.com.au/~mark/software/lua-cjson.php) and copy cjson.so to path specified by ```lua_package_cpath``` policy
-3. Clone [ngx_stats](https://github.com/StudioSol/ngx_stats) in path specified by ```lua_package_path``` policy
+2. Clone [ngx_stats](https://github.com/StudioSol/ngx_stats) in path specified by ```lua_package_path``` policy
 
 ```sh
 cd /etc/nginx/lua/
@@ -145,6 +144,5 @@ http {
 ## See Also
 
 - [lua-nginx-module](https://github.com/chaoslawful/lua-nginx-module) Embed the Power of Lua into NginX
-- [lua CJSON](http://www.kyne.com.au/~mark/software/lua-cjson.php) Lua CJSON provides JSON support for Lua
 - [LuaJIT](http://luajit.org/) a Just-In-Time Compiler for Lua
 - [nginx](http://nginx.org/) HTTP and reverse proxy server
