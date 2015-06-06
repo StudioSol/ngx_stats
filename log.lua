@@ -37,3 +37,27 @@ if common.in_table(ngx.var.upstream_cache_status, cache_status) then
 end
 
 common.incr_or_create(stats, common.key({group, 'status', common.get_status_code_class(status)}), 1)
+
+--[[ Connection statistics
+
+Active connections
+==================
+The current number of active client connections including Waiting connections.
+
+Reading connections
+===================
+The current number of connections where nginx is reading the request header.
+
+Waiting connections
+===================
+The current number of idle client connections waiting for a request.
+
+Writing connections
+===================
+The current number of connections where nginx is writing the response back to the client.
+
+]]--
+stats:set('active_connections', ngx.var.connections_active)
+stats:set('reading_connections', ngx.var.connections_reading)
+stats:set('waiting_connections', ngx.var.connections_waiting)
+stats:set('writing_connections', ngx.var.connections_writing)
