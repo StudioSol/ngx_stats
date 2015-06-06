@@ -38,6 +38,11 @@ end
 
 common.incr_or_create(stats, common.key({group, 'status', common.get_status_code_class(status)}), 1)
 
+-- Traffic being sent to and from the client
+common.update(stats, common.key({group, 'traffic', 'received'}), ngx.var.request_length)
+common.update(stats, common.key({group, 'traffic', 'sent'}), ngx.var.bytes_sent)
+
+
 --[[ Connection statistics
 
 Active connections
@@ -61,3 +66,4 @@ stats:set('active_connections', ngx.var.connections_active)
 stats:set('reading_connections', ngx.var.connections_reading)
 stats:set('waiting_connections', ngx.var.connections_waiting)
 stats:set('writing_connections', ngx.var.connections_writing)
+stats:set('connection_requests', ngx.var.connection_requests)

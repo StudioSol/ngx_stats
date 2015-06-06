@@ -43,7 +43,6 @@ function _M.in_table ( e, t )
 end
 
 
-
 function _M.format_response(key, value, response)
     local path = split(tostring(key), ':')
     key = table.remove(path, 1)
@@ -73,5 +72,11 @@ function _M.get_status_code_class(status)
       return "xxx"
   end
 end
+
+
+function _M.update(stats, key, value)
+    stats:set(key, value)
+end
+
 
 return _M
