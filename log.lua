@@ -62,8 +62,10 @@ Writing connections
 The current number of connections where nginx is writing the response back to the client.
 
 ]]--
-stats:set('active_connections', ngx.var.connections_active)
-stats:set('reading_connections', ngx.var.connections_reading)
-stats:set('waiting_connections', ngx.var.connections_waiting)
-stats:set('writing_connections', ngx.var.connections_writing)
-stats:set('connection_requests', ngx.var.connection_requests)
+common.update(stats, common.key({'connections', 'active'}), ngx.var.connections_active)
+common.update(stats, common.key({'connections', 'idle'}), ngx.var.connections_waiting)
+common.update(stats, common.key({'connections', 'reading'}), ngx.var.connections_reading)
+common.update(stats, common.key({'connections', 'writing'}), ngx.var.connections_writing)
+
+common.update(stats, common.key({'requests', 'current'}), ngx.var.connection_requests)
+common.incr_or_create(stats, common.key({'requests', 'total'}), 1) 
