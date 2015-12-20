@@ -33,9 +33,9 @@ function _M.key(key_table)
 end
 
 
-function _M.in_table ( e, t )
-    for _,v in pairs(t) do
-        if (v==e) then
+function _M.in_table (value, table)
+    for _, v in pairs(table) do
+        if (v == value) then
             return true
         end
     end
