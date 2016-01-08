@@ -6,4 +6,4 @@ for k,v in pairs(keys) do
     response = common.format_response(v, stats:get(v), response)
 end
 
-ngx.say(json.encode(response))
+ngx.say(cjson.encode(response))
